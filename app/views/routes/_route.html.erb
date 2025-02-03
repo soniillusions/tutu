@@ -1,0 +1,8 @@
+<div>
+  <p>route id: <%= route.id %></p>
+  <p>name: <%= route.name %></p>
+  <br>
+  <%= link_to 'Show', route_path(route) %>
+  <%= link_to 'Edit', edit_route_path(route) %>
+  <%= link_to 'Delete', route_path(route), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+</div>

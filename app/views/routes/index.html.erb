@@ -1,0 +1,6 @@
+<%= link_to 'Create new route', new_route_path %>
+<br>
+
+<% @routes.each do |route| %>
+  <%= render 'route', route: route %>
+<% end%>
