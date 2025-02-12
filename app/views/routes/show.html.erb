@@ -1,4 +1,10 @@
 <%= render 'route', route: @route %>
 
+<strong>Trains on this route: </strong>
+<% @route.trains.each do |train| %>
+  <p>Train id: <strong><%= train.id %></strong></p>
+  <p>Train number: <strong><%= train.number %></strong><p>
+<% end %>
+
 <br>
 <%= link_to 'Back to all', routes_path %>

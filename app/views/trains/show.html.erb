@@ -5,7 +5,13 @@
 <% if @train.current_station.nil? %>
   Поезд не находится на какой-либо станции
 <% else %>
-  <p><%= @train.current_station.title %></p>
+  <p>Поезд на станции: <strong><%= @train.current_station.title %></strong></p>
+<% end %>
+
+<% if @train.current_route.nil? %>
+  Поезду не назначен маршрут
+<% else %>
+  <p>Маршрут поезда: <strong><%= @train.current_route.name %></strong></p>
 <% end %>
 
 <div>

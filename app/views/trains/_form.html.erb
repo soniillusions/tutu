@@ -12,6 +12,11 @@
   </div>
 
   <div>
+    <%= form.label :current_route, "Текущий маршрут" %>
+    <%= form.collection_select :current_route_id, Route.all, :id, :name %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

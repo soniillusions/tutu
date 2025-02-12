@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_07_080330) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_12_113958) do
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -21,6 +21,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_07_080330) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "trains_id"
+    t.index ["trains_id"], name: "index_routes_on_trains_id"
   end
 
   create_table "station_routes", force: :cascade do |t|
@@ -47,10 +49,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_07_080330) do
     t.datetime "updated_at", null: false
     t.integer "railway_station_id"
     t.integer "current_station_id"
-    t.integer "route_id", null: false
+    t.integer "current_route_id"
+    t.index ["current_route_id"], name: "index_trains_on_current_route_id"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["railway_station_id"], name: "index_trains_on_railway_station_id"
-    t.index ["route_id"], name: "index_trains_on_route_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,9 +67,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_07_080330) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "routes", "trains", column: "trains_id"
   add_foreign_key "tickets", "railway_stations", column: "arrival_station_id"
   add_foreign_key "tickets", "railway_stations", column: "departure_station_id"
   add_foreign_key "tickets", "trains"
   add_foreign_key "tickets", "users"
-  add_foreign_key "trains", "routes"
+  add_foreign_key "trains", "routes", column: "current_route_id"
 end
