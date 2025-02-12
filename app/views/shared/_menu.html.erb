@@ -20,9 +20,9 @@
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
           <span class="nav-link">Здравствуйте, <%= current_user.email %></span>
-          <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: "nav-link active" %>
+          <%= link_to 'Выйти', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?'}, class: "nav-link active" %>
         <% else %>
-          <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "nav-link active" %>
+          <%= link_to 'Войти', new_user_session_path, class: "nav-link active"  %> <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "nav-link active" %>
         <% end %>
       </ul>
     </div>
