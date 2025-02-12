@@ -1,9 +1,11 @@
-<div id="<%= dom_id train %>">
-  <p>
-    <strong>Number:</strong>
-    <%= train.number %>
-  </p>
+<div class="card mb-2" id="<%= dom_id train %>">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= train.number %>
+    </h5>
 
-  <%= link_to 'Show', train_path(train) %>
-
+    <% unless request.path == train_path(train)  %>
+      <%= link_to 'Show', train_path(train) %>
+    <% end %>
+  </div>
 </div>
