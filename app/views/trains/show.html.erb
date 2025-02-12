@@ -2,6 +2,12 @@
 
 <%= render @train %>
 
+<% if @train.current_station.nil? %>
+  Поезд не находится на какой-либо станции
+<% else %>
+  <p><%= @train.current_station.title %></p>
+<% end %>
+
 <div>
   <%= link_to "Edit this train", edit_train_path(@train) %> |
   <%= link_to "Back to trains", trains_path %>

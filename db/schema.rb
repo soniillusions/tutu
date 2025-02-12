@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_03_230649) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_07_080330) do
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -23,10 +23,51 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_03_230649) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "station_routes", force: :cascade do |t|
+    t.integer "railway_station_id"
+    t.integer "route_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer "train_id", null: false
+    t.integer "departure_station_id", null: false
+    t.integer "arrival_station_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["arrival_station_id"], name: "index_tickets_on_arrival_station_id"
+    t.index ["departure_station_id"], name: "index_tickets_on_departure_station_id"
+    t.index ["train_id"], name: "index_tickets_on_train_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
+
   create_table "trains", force: :cascade do |t|
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "railway_station_id"
+    t.integer "current_station_id"
+    t.integer "route_id", null: false
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id"
+    t.index ["railway_station_id"], name: "index_trains_on_railway_station_id"
+    t.index ["route_id"], name: "index_trains_on_route_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "tickets", "railway_stations", column: "arrival_station_id"
+  add_foreign_key "tickets", "railway_stations", column: "departure_station_id"
+  add_foreign_key "tickets", "trains"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "trains", "routes"
 end
