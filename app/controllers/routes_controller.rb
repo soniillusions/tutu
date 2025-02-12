@@ -2,7 +2,7 @@ class RoutesController < ApplicationController
   before_action :set_route, only: %i[show edit update destroy]
 
   def index
-    @routes = Route.all
+    @routes = Route.all.order(created_at: :desc)
   end
 
   def show;end
@@ -15,7 +15,8 @@ class RoutesController < ApplicationController
 
   def update
     if @route.update(route_params)
-      redirect_to @route, notice: 'Route was successfully updated!'
+      flash[:success] = "Railway station updated successfully!"
+      redirect_to @route
     else
       render :edit
     end
@@ -25,7 +26,8 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to @route, notice: 'Route was successfully created!'
+      flash[:success] = "Route created successfully!"
+      redirect_to @route
     else
       render :new
     end
@@ -33,7 +35,8 @@ class RoutesController < ApplicationController
 
   def destroy
     @route.destroy!
-    redirect_to routes_path, notice: 'Route was successfully deleted!'
+    flash[:warning] = "Route deleted successfully!"
+    redirect_to routes_path
   end
 
   private

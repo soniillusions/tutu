@@ -1,8 +1,11 @@
-<div>
-  <p>route id: <%= route.id %></p>
-  <p>name: <%= route.name %></p>
-  <br>
-  <%= link_to 'Show', route_path(route) %>
-  <%= link_to 'Edit', edit_route_path(route) %>
-  <%= link_to 'Delete', route_path(route), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+<div class="card mb-2" id="<%= dom_id route %>">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= route.name %>
+    </h5>
+
+    <% unless request.path == route_path(route)  %>
+      <%= link_to 'Подробнее', route_path(route) %>
+    <% end %>
+  </div>
 </div>

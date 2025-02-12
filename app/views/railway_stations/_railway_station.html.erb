@@ -1,11 +1,11 @@
-<div class="card mb-2" id="<%= dom_id railway_station %>">
+<div class="card mb-2">
   <div class="card-body">
     <h5 class="card-title">
       <%= railway_station.title %>
     </h5>
 
     <% unless request.path == railway_station_path(railway_station)  %>
-      <%= link_to 'Show', railway_station_path(railway_station) %>
+      <%= link_to 'Подробнее', railway_station_path(railway_station) %>
     <% end %>
   </div>
 </div>

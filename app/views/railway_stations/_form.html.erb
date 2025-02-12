@@ -1,12 +1,12 @@
 <%= form_with(model: railway_station) do |form| %>
   <%= render 'shared/errors', object: railway_station %>
 
-  <div>
+  <div class="mb-2">
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title, class: 'form-control', required: true %>
   </div>
 
   <div>
-    <%= form.submit "#{ railway_station.new_record? ? 'Create' : 'Edit' }" %>
+    <%= form.submit "#{ railway_station.new_record? ? 'Create' : 'Edit' }", class: 'btn btn-primary ' %>
   </div>
 <% end %>

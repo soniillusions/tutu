@@ -1,10 +1,10 @@
 <%= form_with model: @route do |f| %>
-  <div>
+  <div class="mb-2">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= f.submit 'Submit' %>
+    <%= f.submit 'Создать', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,10 +1,20 @@
 <%= render 'route', route: @route %>
 
-<strong>Trains on this route: </strong>
-<% @route.trains.each do |train| %>
-  <p>Train id: <strong><%= train.id %></strong></p>
-  <p>Train number: <strong><%= train.number %></strong><p>
+<div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
+  <%= link_to "Edit", edit_route_path(@route), class: "btn btn-primary" %>
+  <%= link_to "Back to routes", routes_path, class: "btn btn-primary" %>
+
+  <%= button_to "Destroy", @route, method: :delete, class: "btn btn-danger" %>
+</div>
+
+<strong>Поезда на этом маршруте: </strong>
+<% if @route.trains.empty? %>
+  <p>There are no trains</p>
+<% else %>
+  <% @route.trains.each do |train| %>
+    <%= render partial: 'trains/train', locals: { train: train } %>
+  <% end %>
 <% end %>
 
 <br>
-<%= link_to 'Back to all', routes_path %>
+<%= link_to 'Назад к маршрутам', routes_path %>
