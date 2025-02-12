@@ -10,13 +10,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="main-container">
-    <%= render 'shared/menu'%>
+  <body class="d-flex flex-column min-vh-100 main-container">
+    <main class="flex-grow-1">
+      <%= render 'shared/menu'%>
 
-    <%= render 'shared/flash' %>
+      <%= render 'shared/flash' %>
 
-    <%= yield %>
+      <%= yield %>
+    </main>
 
-    <footer>@soniillusions</footer>
+    <footer class="text-black text-center py-3">
+      @soniillusions
+    </footer>
   </body>
 </html>

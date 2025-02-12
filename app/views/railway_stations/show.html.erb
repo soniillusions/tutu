@@ -2,6 +2,13 @@
 
 <%= render @railway_station %>
 
+<div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
+  <%= link_to "Edit this railway station", edit_railway_station_path(@railway_station), class: "btn btn-primary" %>
+  <%= link_to "Back to railway stations", railway_stations_path, class: "btn btn-primary" %>
+
+  <%= button_to "Destroy this railway station", @railway_station, method: :delete, class: "btn btn-danger" %>
+</div>
+
 <% if @railway_station.routes.nil? %>
   <p>Станция не имеет ни одного маршрута!</p>
 <% else %>
@@ -10,10 +17,3 @@
     <li><%= route.name %></li>
   <% end %>
 <% end %>
-
-<div>
-  <%= link_to "Edit this railway station", edit_railway_station_path(@railway_station) %> |
-  <%= link_to "Back to railway stations", railway_stations_path %>
-
-  <%= button_to "Destroy this railway station", @railway_station, method: :delete %>
-</div>
