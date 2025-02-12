@@ -68,3 +68,5 @@ end
 
 gem "devise", "~> 4.9"
 
+gem "sassc-rails"
+gem "bootstrap"
