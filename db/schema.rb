@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_12_113958) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_13_135419) do
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -21,8 +21,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_12_113958) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "trains_id"
-    t.index ["trains_id"], name: "index_routes_on_trains_id"
+    t.integer "train_id"
+    t.index ["train_id"], name: "index_routes_on_train_id"
   end
 
   create_table "station_routes", force: :cascade do |t|
@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_12_113958) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "routes", "trains", column: "trains_id"
+  add_foreign_key "routes", "trains"
   add_foreign_key "tickets", "railway_stations", column: "arrival_station_id"
   add_foreign_key "tickets", "railway_stations", column: "departure_station_id"
   add_foreign_key "tickets", "trains"
