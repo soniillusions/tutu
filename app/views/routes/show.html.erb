@@ -7,12 +7,21 @@
   <%= button_to "Destroy", @route, method: :delete, class: "btn btn-danger" %>
 </div>
 
-<strong>Поезда на этом маршруте: </strong>
+<strong>Поезда на этом маршруте:</strong>
 <% if @route.trains.empty? %>
   <p>There are no trains</p>
 <% else %>
   <% @route.trains.each do |train| %>
     <%= render partial: 'trains/train', locals: { train: train } %>
+  <% end %>
+<% end %>
+
+<strong>Список станций на маршруте:</strong>
+<% if @route.railway_stations.empty? %>
+  <p>На этом маршруте нет ни одной станции</p>
+<% else %>
+  <% @route.railway_stations.each do |station| %>
+    <%= render partial: 'railway_stations/railway_station', locals: { railway_station: station  } %>
   <% end %>
 <% end %>
 
