@@ -1,12 +1,14 @@
-<%= form_with model: @route do |f| %>
+<%= form_with model: @route, data: { turbo: :false } do |f| %>
+  <%= render 'shared/errors', object: @route %>
+
   <div class="mb-2">
-    <%= f.label :name %>
+    <%= f.label :name, 'Имя станции:' %>
     <%= f.text_field :name, class: "form-control" %>
   </div>
 
   <div class="mb-2">
-    <%= f.label :railway_station_ids, "Список станций" %>
-    <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, multiple: true %>
+    <%= f.label :railway_station_ids, "Список станций:" %>
+    <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, multiple: true, class: 'form-select' %>
   </div>
 
   <div>
