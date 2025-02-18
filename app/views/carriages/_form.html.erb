@@ -1,4 +1,6 @@
-<%= form_with(model: @carriage_for_form, url: train_carriage_path(@train, @carriage_for_form), local: true) do |form| %>
+<%= form_with(model: @carriage_for_form,
+url: @carriage_for_form.persisted? ? train_carriage_path(@train, @carriage_for_form) : train_carriages_path(@train),
+ local: true) do |form| %>
   <%= render 'shared/errors', object: @carriage %>
 
   <%= form.label :type, "Тип вагона" %>

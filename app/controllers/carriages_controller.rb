@@ -3,7 +3,8 @@ class CarriagesController < ApplicationController
   before_action :set_carriage, only: %i[show edit update destroy]
   
   def new
-    @carriage = Carriage.new
+    @carriage = @train.carriages.build
+    @carriage_for_form = @carriage.becomes(Carriage)
   end
 
   def index
@@ -13,7 +14,6 @@ class CarriagesController < ApplicationController
   def show;end
 
   def edit
-    @carriage = Carriage.find(params[:id])
     @carriage_for_form = @carriage.becomes(Carriage)
   end
 
