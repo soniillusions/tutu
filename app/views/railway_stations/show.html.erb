@@ -12,6 +12,6 @@
 <% else %>
   <p>Станция входит в следующие маршруты:</p>
   <% @railway_station.routes.each do |route| %>
-    <li><%= route.name %></li>
+    <%= render partial: 'routes/route', locals: { route: route } %>
   <% end %>
 <% end %>

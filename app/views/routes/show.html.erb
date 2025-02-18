@@ -1,15 +1,15 @@
 <%= render 'route', route: @route %>
 
 <div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
-  <%= link_to "Edit", edit_route_path(@route), class: "btn btn-primary" %>
-  <%= link_to "Back to routes", routes_path, class: "btn btn-primary" %>
+  <%= link_to "Изменить", edit_route_path(@route) %>
+  <%= link_to "Назад к маршрутам", routes_path  %>
 
-  <%= button_to "Destroy", @route, method: :delete, class: "btn btn-danger" %>
+  <%= link_to "Удалить маршрут", @route, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"}  %>
 </div>
 
 <strong>Поезда на этом маршруте:</strong>
 <% if @route.trains.empty? %>
-  <p>There are no trains</p>
+  <p>На маршруте нет поездов</p>
 <% else %>
   <% @route.trains.each do |train| %>
     <%= render partial: 'trains/train', locals: { train: train } %>

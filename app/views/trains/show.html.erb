@@ -7,12 +7,12 @@
   <%= link_to "Destroy this train", @train, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?" } %>
 </div>
 
-<div class="row">
+<div class="mb-2">
   <%= link_to 'К управлению вагонами', train_carriages_path(@train) %>
 </div>
 
 
-<div class="row">
+<div class="mb-2">
   <% if @train.current_station.nil? %>
     Поезд не находится на какой-либо станции
   <% else %>
@@ -20,7 +20,7 @@
   <% end %>
 </div>
 
-<div class="row">
+<div class="mb-2">
   <% if @train.current_route.nil? %>
     Поезду не назначен маршрут
   <% else %>

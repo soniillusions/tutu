@@ -1,8 +1,14 @@
 <div class="card mb-2">
   <div class="card-body">
     <h5 class="card-title">
-      <%= carriage.number %>
+      Вагон№: <%= carriage.number %> | Тип: <%= carriage.type %>
     </h5>
+
+    <div class="row mb-2">
+      <div class="col">
+        <img src="<%= asset_path('car') %>" class="img">
+      </div>
+    </div>
 
     <% if carriage.type.present? %>
       <p>Тип вагона: <%= carriage.type %></p>

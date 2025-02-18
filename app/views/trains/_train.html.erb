@@ -1,8 +1,14 @@
 <div class="card mb-2" id="<%= dom_id train %>">
   <div class="card-body">
     <h5 class="card-title">
-      <%= train.number %>
+     Поезд№: <%= train.number %>
     </h5>
+
+    <div class="row mb-2">
+      <div class="col">
+        <img src="<%= asset_path('train') %>" class="img-train">
+      </div>
+    </div>
 
     <% unless request.path == train_path(train)  %>
       <%= link_to 'Подробнее', train_path(train) %>

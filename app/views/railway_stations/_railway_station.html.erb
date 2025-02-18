@@ -4,6 +4,12 @@
       <%= railway_station.title %>
     </h5>
 
+    <div class="row mb-2">
+      <div class="col">
+        <img src="<%= asset_path('station') %>" class="img">
+      </div>
+    </div>
+
     <% if local_assigns[:position].present? %>
       <p>Порядковый номер: <%= position %></p>
     <% end %>
