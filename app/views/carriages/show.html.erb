@@ -21,10 +21,30 @@
   </div>
 </div>
 
+<br>
+
+<h5>Детальнaя информация о вагоне:</h5>
+
 <% if @carriage.type.present? %>
   <p>Тип вагона: <%= @carriage.type %></p>
 <% end %>
 
 <% if @carriage.top_seats.present? %>
   <p>Верхних мест: <%= @carriage.top_seats %></p>
+<% end %>
+
+<% if @carriage.bottom_seats.present? %>
+  <p>Нижних мест: <%= @carriage.bottom_seats %></p>
+<% end %>
+
+<% if @carriage.side_top_seats.present? %>
+  <p>Верхних боковых мест: <%= @carriage.side_top_seats %></p>
+<% end %>
+
+<% if @carriage.side_bottom_seats.present? %>
+  <p>Нижних боковых мест: <%= @carriage.side_bottom_seats %></p>
+<% end %>
+
+<% if @carriage.seating_seats.present? %>
+  <p>Сидячих мест: <%= @carriage.seating_seats %></p>
 <% end %>
