@@ -5,7 +5,9 @@ class RoutesController < ApplicationController
     @routes = Route.all.order(created_at: :desc)
   end
 
-  def show;end
+  def show
+    @stations = RailwayStation.joins(:railway_stations_routes).where(railway_stations_routes: { route_id: @route.id} ).order_by_position
+  end
 
   def new
     @route = Route.new
