@@ -1,7 +1,7 @@
 <div class="card mb-2">
   <div class="card-body">
     <h5 class="card-title">
-      Вагон№: <%= carriage.number %> | Тип: <%= carriage.type %>
+      Вагон №: <%= carriage.number %> | Тип: <%= carriage.type %>
     </h5>
 
     <div class="row mb-2">
@@ -14,8 +14,6 @@
       <p>Тип вагона: <%= carriage.type %></p>
     <% end %>
 
-    <% if carriage.top_seats.present? %>
-      <p>Верхних мест: <%= carriage.top_seats %></p>
-    <% end %>
+    <%= link_to 'Подробнее', train_carriage_path(@train, carriage) %>
   </div>
 </div>

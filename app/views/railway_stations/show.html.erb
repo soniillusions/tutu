@@ -1,10 +1,10 @@
+<%= link_to 'Назад', railway_stations_path %>
+
 <%= render @railway_station %>
 
 <div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
-  <%= link_to "Изменить станцию", edit_railway_station_path(@railway_station) %>
-  <%= link_to "Назад к списку станций", railway_stations_path %>
-
-  <%= link_to "Удалить станцию", @railway_station, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"} %>
+  <%= link_to "Изменить", edit_railway_station_path(@railway_station) %>
+  <%= link_to "Удалить", @railway_station, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"} %>
 </div>
 
 <% if @railway_station.routes.nil? %>

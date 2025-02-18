@@ -12,7 +12,10 @@ class CarriagesController < ApplicationController
 
   def show;end
 
-  def edit;end
+  def edit
+    @carriage = Carriage.find(params[:id])
+    @carriage_for_form = @carriage.becomes(Carriage)
+  end
 
   def create
     @carriage = @train.carriages.build(carriage_params)
@@ -37,6 +40,7 @@ class CarriagesController < ApplicationController
   def destroy
     @carriage.destroy!
     flash[:warning] = 'Вагон успешно удален!'
+    redirect_to train_carriages_path(@train)
   end
 
   private

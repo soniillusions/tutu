@@ -2,7 +2,7 @@
   <%= render 'shared/errors', object: train %>
 
   <div>
-    <%= form.label :number, style: "display: block" %>
+    <%= form.label :number, 'Номер',  style: "display: block" %>
     <%= form.text_field :number, class: "form-control" %>
   </div>
 
@@ -17,6 +17,6 @@
   </div>
 
   <div>
-    <%= form.submit 'Submit', class: "btn btn-primary" %>
+    <%= form.submit 'Сохранить', class: "btn btn-primary" %>
   </div>
 <% end %>

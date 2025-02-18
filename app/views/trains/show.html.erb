@@ -1,10 +1,10 @@
+<%= link_to 'Назад', trains_path %>
+
 <%= render @train %>
 
 <div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
-  <%= link_to "Edit this train", edit_train_path(@train) %>
-  <%= link_to "Back to trains", trains_path  %>
-
-  <%= link_to "Destroy this train", @train, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?" } %>
+  <%= link_to "Изменить", edit_train_path(@train) %>
+  <%= link_to "Удалить", @train, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?" } %>
 </div>
 
 <div class="mb-2">

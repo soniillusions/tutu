@@ -1,10 +1,11 @@
+<%= link_to 'Назад', routes_path %>
+
 <%= render 'route', route: @route %>
 
 <div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
   <%= link_to "Изменить", edit_route_path(@route) %>
-  <%= link_to "Назад к маршрутам", routes_path  %>
 
-  <%= link_to "Удалить маршрут", @route, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"}  %>
+  <%= link_to "Удалить", @route, data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"}  %>
 </div>
 
 <strong>Поезда на этом маршруте:</strong>
