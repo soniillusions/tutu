@@ -1,0 +1,7 @@
+<%= render partial: 'trains/train', locals: { train: @train } %>
+
+<%= link_to 'Новый вагон', new_train_carriage_path(@train) %>
+
+<% @train.carriages.each do |car| %>
+  <%= render partial: 'carriage', locals: { carriage: car } %>
+<% end %>

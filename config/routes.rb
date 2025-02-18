@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'persons/profile'
-  resources :trains
+
+  resources :trains do
+    resources :carriages
+  end
+
   resources :railway_stations
   resources :routes
 
