@@ -4,6 +4,10 @@
       <%= railway_station.title %>
     </h5>
 
+    <% if local_assigns[:position].present? %>
+      <p>Порядковый номер: <%= position %></p>
+    <% end %>
+
     <% unless request.path == railway_station_path(railway_station)  %>
       <%= link_to 'Подробнее', railway_station_path(railway_station) %>
     <% end %>

@@ -6,6 +6,8 @@ class Route < ApplicationRecord
   validates :name, presence: :true
   validate :stations_count
 
+  accepts_nested_attributes_for :railway_stations_routes, allow_destroy: true
+
   before_validation :set_name
 
   private
@@ -15,7 +17,11 @@ class Route < ApplicationRecord
   end
 
   def stations_count
-    if railway_stations.size < 2
+    valid_stations = railway_stations_routes.reject do |rsr| 
+      rsr.marked_for_destruction? || rsr.railway_station_id.blank?
+    end
+
+    if valid_stations.size < 2
       errors.add(:base, "Route should contain at least 2 stations")
     end
   end

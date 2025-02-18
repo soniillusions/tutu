@@ -21,7 +21,7 @@
   <p>На этом маршруте нет ни одной станции</p>
 <% else %>
   <% @route.railway_stations.each do |station| %>
-    <%= render partial: 'railway_stations/railway_station', locals: { railway_station: station  } %>
+    <%= render partial: 'railway_stations/railway_station', locals: { railway_station: station, position: station.position_in_route(@route) } %>
   <% end %>
 <% end %>
 

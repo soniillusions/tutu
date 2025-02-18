@@ -9,6 +9,7 @@ class RoutesController < ApplicationController
 
   def new
     @route = Route.new
+    2.times { @route.railway_stations_routes.build } 
   end
 
   def edit;end
@@ -42,7 +43,7 @@ class RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:name, railway_station_ids: [])
+    params.require(:route).permit(:name, railway_stations_routes_attributes: [:id, :railway_station_id, :position, :_destroy])
   end
 
   def set_route
