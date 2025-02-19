@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_18_114758) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_19_164652) do
   create_table "carriages", force: :cascade do |t|
     t.integer "number"
     t.integer "top_seats"
@@ -65,6 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_18_114758) do
     t.integer "railway_station_id"
     t.integer "current_station_id"
     t.integer "current_route_id"
+    t.string "sord_order", default: "head"
+    t.boolean "sort_from_head", default: true
     t.index ["current_route_id"], name: "index_trains_on_current_route_id"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["railway_station_id"], name: "index_trains_on_railway_station_id"

@@ -8,7 +8,7 @@ class CarriagesController < ApplicationController
   end
 
   def index
-    @carriages = @train.carriages.order(created_at: :desc)
+    @carriages = @train.sorted_carriages
   end
 
   def show;end
