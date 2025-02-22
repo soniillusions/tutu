@@ -15,12 +15,12 @@
     <% end %>
 
     <% if show_time_for_station? %>
-      <% if local_assigns[:departure_time].present? %>
-        <p>Отправление: <%= departure_time.strftime("%d.%m.%Y %H:%M") %></p>
-      <% end %>
-
       <% if local_assigns[:arrival_time].present? %>
         <p>Прибытие: <%= arrival_time.strftime("%d.%m.%Y %H:%M") %></p>
+      <% end %>
+
+      <% if local_assigns[:departure_time].present? %>
+        <p>Отправление: <%= departure_time.strftime("%d.%m.%Y %H:%M") %></p>
       <% end %>
     <% end %>
 

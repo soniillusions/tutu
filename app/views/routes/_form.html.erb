@@ -22,6 +22,11 @@
           </div>
 
           <div class="mb-2">
+            <%= rsr.label :arrival_time, "Время прибытия:" %>
+            <%= rsr.datetime_select :arrival_time, include_seconds: false, default: Time.current %>
+          </div>
+
+          <div class="mb-2">
             <%= rsr.label :departure_time, "Время отправления:" %>
             <%= rsr.datetime_select :departure_time, include_seconds: false, default: Time.current %>
           </div>
