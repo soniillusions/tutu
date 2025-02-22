@@ -45,7 +45,8 @@ class RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:name, railway_stations_routes_attributes: [:id, :railway_station_id, :position, :_destroy])
+    params.require(:route).permit(:name,
+                                  railway_stations_routes_attributes: [:id, :railway_station_id, :position, :departure_time, :arrival_time, :_destroy])
   end
 
   def set_route

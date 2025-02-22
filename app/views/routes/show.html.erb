@@ -22,7 +22,11 @@
   <p>На этом маршруте нет ни одной станции</p>
 <% else %>
   <% @stations.each do |station| %>
-    <%= render partial: 'railway_stations/railway_station', locals: { railway_station: station, position: station.position_in_route(@route) } %>
+    <%= render partial: 'railway_stations/railway_station',
+               locals: { railway_station: station,
+                         position: station.position_in_route(@route),
+                         departure_time: station.departure_in_route(@route),
+                         arrival_time: station.arrival_in_route(@route) } %>
   <% end %>
 <% end %>
 

@@ -12,4 +12,12 @@ class RailwayStation < ApplicationRecord
   def position_in_route(route)
     railway_stations_routes.find_by(route: route)&.position
   end
+
+  def departure_in_route(route)
+    railway_stations_routes.find_by(route: route)&.departure_time
+  end
+
+  def arrival_in_route(route)
+    railway_stations_routes.find_by(route: route)&.arrival_time
+  end
 end
