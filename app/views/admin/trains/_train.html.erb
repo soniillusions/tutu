@@ -1,23 +1,27 @@
 <tr>
-  <td><%= train.id%></td>
-  <td>
-    <%= train.number %>
-  </td>
+  <td><%= train.id %></td>
+  <td><%= train.number %></td>
+  
+  <% if controller_name == 'searches' %>
+    <td><%= route.departure_time || 'Не указано' %></td>
+    <td><%= route.arrival_time || 'Не указано' %></td>
+  <% end %>
 
   <td>
     <% if current_user.present? && params[:departure_station_id].present? && params[:arrival_station_id].present? %>
       <%= link_to 'Купить билет', new_user_ticket_path(current_user, train_id: train.id,
-      departure_station_id: params[:departure_station_id], arrival_station_id: params[:arrival_station_id]) %>
+      departure_station_id: params[:departure_station_id], arrival_station_id: params[:arrival_station_id]),
+      class: 'text-primary text-decoration-none' %>
     <% else %>
       <p>Войдите или зарегистрируйтесь, чтобы купить билет.</p>
     <% end %>
   </td>
 
-  <td>
-    <% if current_user&.admin_role? %>
-      <% unless request.path == admin_train_path(train)  %>
-        <%= link_to 'Показать', admin_train_path(train), class: 'text-primary text-decoration-none' unless request.path == admin_train_path(train) %>
-      <% end %>
-    <% end %>
-  </td>
+  <% if current_user&.admin_role? && current_user.present? %>
+    <td>
+        <% unless request.path == admin_train_path(train) %>
+          <%= link_to 'Показать', admin_train_path(train), class: 'text-primary text-decoration-none' %>
+        <% end %>
+    </td>
+  <% end %>
 </tr>

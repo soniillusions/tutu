@@ -5,11 +5,29 @@
 <% if @routes.any? %>
     <% @routes.each do |route| %>
       <% route.trains.each do |train| %>
-        <%= render partial: 'admin/trains/train', locals: { train: train } %>
-      <tr>
-        <td>Отправление: <%= route.departure_time || "-" %></td>
-        <td>Прибытие: <%= route.arrival_time || "-" %></td>
-      </tr>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Номер</th>
+              <th>Отправление</th>
+              <th>Прибытие</th>
+              <th>Действия</th>
+              <% if current_user&.admin_role? %>
+                  <th>Действия</th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: 'admin/trains/train', 
+                      locals: { 
+                        train: train,
+                        departure_station: route.railway_stations.first,
+                        arrival_station: route.railway_stations.last,
+                        route: route
+                      } %>
+          </tbody>
+        </table>
       <% end %>
     <% end %>
   </table>

@@ -53,13 +53,18 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Номер</th>
+                  <th>Номер поезда</th>
                   <th>Действия</th>
                   <th>Действия</th>
                 </tr>
               </thead>
               <tbody>
-                <%= render partial: 'admin/trains/train', locals: { train: train } %>
+                <%= render partial: 'admin/trains/train', 
+                          locals: { 
+                            train: train,
+                            departure_station: @route.railway_stations.first,
+                            arrival_station: @route.railway_stations.last
+                          } %>
               </tbody>
             </table>
           <% end %>

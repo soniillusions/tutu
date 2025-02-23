@@ -42,7 +42,7 @@ module Admin
     def destroy
       @route.destroy!
       flash[:warning] = "Route deleted successfully!"
-      redirect_to routes_path
+      redirect_to admin_routes_path
     end
 
     private
