@@ -1,3 +1,5 @@
+<%= link_to 'Назад', :back %>
+
 <%= form_with model: [current_user, @ticket] do |f| %>
   <%= render 'shared/errors', object: @ticket %>
 
