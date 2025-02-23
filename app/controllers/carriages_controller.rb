@@ -24,7 +24,7 @@ class CarriagesController < ApplicationController
       flash[:success] = 'Вагон успешно сохранен!'
       redirect_to train_carriages_path(@train)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -33,7 +33,7 @@ class CarriagesController < ApplicationController
       flash[:success] = 'Данные вагона успешно обновлены!'
       redirect_to train_carriages_path(@train)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -19,8 +19,7 @@ class TicketsController < ApplicationController
       flash[:success] = 'Билет успешно куплен'
       redirect_to user_ticket_path(current_user, @ticket)
     else
-      puts @ticket.errors.full_messages # Вывод ошибок в консоль
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

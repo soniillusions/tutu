@@ -1,14 +1,14 @@
 <%= form_with model: [current_user, @ticket] do |f| %>
-  <%= render 'shared/errors', object: @train %>
+  <%= render 'shared/errors', object: @ticket %>
 
-  <div>
-    <%= f.label :passenger_name, "ФИО пассажира" %>
-    <%= f.text_field :passenger_name, required: true %>
+  <div class="mb-2">
+    <%= f.label :passenger_name, "ФИО пассажира:" %>
+    <%= f.text_field :passenger_name, required: true, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= f.label :passport_number, "Паспорт" %>
-    <%= f.text_field :passport_number, required: true %>
+  <div class="mb-2">
+    <%= f.label :passport_number, "Паспорт:" %>
+    <%= f.text_field :passport_number, required: true, class: 'form-control' %>
   </div>
 
   <%= f.hidden_field :train_id %>
@@ -17,5 +17,5 @@
 
   <%= f.hidden_field :arrival_station_id %>
 
-  <%= f.submit "Купить билет" %>
+  <%= f.submit "Купить билет", class: 'btn btn-primary' %>
 <% end %>

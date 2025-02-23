@@ -21,7 +21,7 @@ class RoutesController < ApplicationController
       flash[:success] = "Railway station updated successfully!"
       redirect_to @route
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -32,7 +32,7 @@ class RoutesController < ApplicationController
       flash[:success] = "Route created successfully!"
       redirect_to @route
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
