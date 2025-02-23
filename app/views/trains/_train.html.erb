@@ -10,6 +10,11 @@
       </div>
     </div>
 
+    <% if current_user.present? && params[:departure_station_id].present? && params[:arrival_station_id].present? %>
+      <%= link_to 'Купить билет', new_user_ticket_path(current_user, train_id: train.id,
+      departure_station_id: params[:departure_station_id], arrival_station_id: params[:arrival_station_id]) %>
+    <% end %>
+
     <% unless request.path == train_path(train)  %>
       <%= link_to 'Подробнее', train_path(train) %>
     <% end %>

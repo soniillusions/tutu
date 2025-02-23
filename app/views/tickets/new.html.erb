@@ -1,0 +1,21 @@
+<%= form_with model: [current_user, @ticket] do |f| %>
+  <%= render 'shared/errors', object: @train %>
+
+  <div>
+    <%= f.label :passenger_name, "ФИО пассажира" %>
+    <%= f.text_field :passenger_name, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :passport_number, "Паспорт" %>
+    <%= f.text_field :passport_number, required: true %>
+  </div>
+
+  <%= f.hidden_field :train_id %>
+
+  <%= f.hidden_field :departure_station_id %>
+
+  <%= f.hidden_field :arrival_station_id %>
+
+  <%= f.submit "Купить билет" %>
+<% end %>

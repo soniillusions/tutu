@@ -1,0 +1,14 @@
+<div class="card mb-2">
+  <div class="card-body">
+    <h5 class="card-title">
+     Номер билета: <%= ticket.id %>
+    </h5>
+
+    <p>Имя пассажира: <%= ticket.passenger_name %></p>
+    <p>Паспортные данные: <%= ticket.passport_number %></p>
+    <p>Станция отправления: <%= ticket.departure_station_id %></p>
+    <p>Станция прибытия: <%= ticket.arrival_station_id %></p>
+    
+    <%= link_to 'Сдать билет', user_ticket_path(current_user, ticket), data: { turbo_method: :delete, turbo_confirm: "Вы уверены?" }  %>
+  </div>
+</div>

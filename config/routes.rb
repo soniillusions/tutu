@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
+
   get 'persons/profile'
 
   resources :trains do
     resources :carriages
+  end
+
+  resources :users, only: [] do
+    resources :tickets, only: %i[index show new create destroy] 
   end
 
   resources :railway_stations
