@@ -31,7 +31,7 @@
             <%= rsr.datetime_select :departure_time, include_seconds: false, default: Time.current %>
           </div>
 
-          <button type="button" class="btn btn-secondary remove-station">Удалить станцию</button>
+          <a type="button" class="remove-station">Удалить станцию</a>
         </div>
       <% end %>
     </div>
@@ -40,7 +40,7 @@
   </div>
 
   <div>
-    <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+    <%= f.submit 'Сохранить', class: 'btn btn-secondary' %>
   </div>
 <% end %>
 
@@ -51,6 +51,7 @@
     
     stationsContainer.addEventListener('click', function(e) {
       if (e.target.classList.contains('remove-station')) {
+        e.preventDefault();
         e.target.closest('.station-fields').remove();
       }
     });
@@ -83,7 +84,7 @@
               <%= datetime_select "route[railway_stations_routes_attributes][NEW]", :departure_time, include_seconds: false, default: Time.current %>
             </div>
 
-            <button type="button" class="btn btn-secondary remove-station">Удалить станцию</button>
+             <a type="button" class="remove-station">Удалить станцию</a>
           </div>
         `;
 
