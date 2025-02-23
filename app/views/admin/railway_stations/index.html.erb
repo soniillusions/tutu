@@ -1,3 +1,19 @@
-<%= link_to "Новая станция", new_admin_railway_station_path %>
+<h1>Железнодорожные станции</h1>
 
-<%= render @railway_stations %>
+<div class="mb-3">
+  <%= link_to "Новая станция", new_admin_railway_station_path, class: 'btn btn-secondary' %>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Название станции</th>
+      <th>Создано</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @railway_stations %>
+  </tbody>
+</table>

@@ -1,31 +1,28 @@
-<div class="card mb-2">
-  <div class="card-body">
-    <h5 class="card-title">
-      <%= railway_station.title %>
-    </h5>
-
-    <div class="row mb-2">
-      <div class="col">
-        <img src="<%= asset_path('station') %>" class="img">
-      </div>
-    </div>
-
+<tr>
+  <td><%= railway_station.id %></td>
+  <td>
+    <%= railway_station.title %>
     <% if local_assigns[:position].present? %>
-      <p>Порядковый номер: <%= position %></p>
+      <br>
+      <small class="text-muted">Порядковый номер: <%= position %></small>
     <% end %>
-
+    
     <% if show_time_for_station? %>
       <% if local_assigns[:arrival_time].present? %>
-        <p>Прибытие: <%= arrival_time.strftime("%d.%m.%Y %H:%M") %></p>
+        <br>
+        <small class="text-muted">Прибытие: <%= arrival_time.strftime("%d.%m.%Y %H:%M") %></small>
       <% end %>
 
       <% if local_assigns[:departure_time].present? %>
-        <p>Отправление: <%= departure_time.strftime("%d.%m.%Y %H:%M") %></p>
+        <br>
+        <small class="text-muted">Отправление: <%= departure_time.strftime("%d.%m.%Y %H:%M") %></small>
       <% end %>
     <% end %>
-
-    <% unless request.path == admin_railway_station_path(railway_station)  %>
-      <%= link_to 'Подробнее', admin_railway_station_path(railway_station) %>
-    <% end %>
-  </div>
-</div>
+  </td>
+  <td>
+    <%= railway_station.created_at.strftime("%d.%m.%Y %H:%M") %>
+  </td>
+  <td>
+    <%= link_to 'Показать', admin_railway_station_path(railway_station), class: 'text-primary text-decoration-none' unless request.path == admin_railway_station_path(railway_station) %>
+  </td>
+</tr>
