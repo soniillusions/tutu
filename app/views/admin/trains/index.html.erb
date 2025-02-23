@@ -1,4 +1,19 @@
-<%= link_to "Новый поезд", new_admin_train_path %>
+<h2>Поезда</h2>
 
-<%= render @trains %>
+<div class="mb-3">
+  <%= link_to "Новый поезд", new_admin_train_path %>
+</div>
 
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Номер</th>
+      <th>Действия</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @trains %>
+  </tbody>
+</table>

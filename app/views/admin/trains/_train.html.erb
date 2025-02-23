@@ -1,26 +1,23 @@
-<div class="card mb-2" id="<%= dom_id train %>">
-  <div class="card-body">
-    <h5 class="card-title">
-     Поезд№: <%= train.number %>
-    </h5>
+<tr>
+  <td><%= train.id%></td>
+  <td>
+    <%= train.number %>
+  </td>
 
-    <div class="row mb-2">
-      <div class="col">
-        <img src="<%= asset_path('train') %>" class="img-train">
-      </div>
-    </div>
-
+  <td>
     <% if current_user.present? && params[:departure_station_id].present? && params[:arrival_station_id].present? %>
       <%= link_to 'Купить билет', new_user_ticket_path(current_user, train_id: train.id,
       departure_station_id: params[:departure_station_id], arrival_station_id: params[:arrival_station_id]) %>
     <% else %>
       <p>Войдите или зарегистрируйтесь, чтобы купить билет.</p>
     <% end %>
+  </td>
 
+  <td>
     <% if current_user&.admin_role? %>
       <% unless request.path == admin_train_path(train)  %>
-        <%= link_to 'Подробнее', admin_train_path(train) %>
+        <%= link_to 'Показать', admin_train_path(train), class: 'text-primary text-decoration-none' unless request.path == admin_train_path(train) %>
       <% end %>
     <% end %>
-  </div>
-</div>
+  </td>
+</tr>

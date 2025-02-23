@@ -1,17 +1,17 @@
-<div class="card mb-2" id="<%= dom_id route %>">
-  <div class="card-body">
-    <h5 class="card-title">
-      <%= route.name %>
-    </h5>
-
-    <div class="row mb-2">
-      <div class="col">
-        <img src="<%= asset_path('route') %>" class="img">
-      </div>
-    </div>
-
-    <% unless request.path == admin_route_path(route)  %>
-      <%= link_to 'Подробнее', admin_route_path(route) %>
+<tr>
+  <td><%= route.id %></td>
+  <td><%= route.name %></td>
+  <td>
+    <% if route.railway_stations.any? %>
+      <%= route.railway_stations.count %> станций
+    <% else %>
+      <span class="text-muted">Нет станций</span>
     <% end %>
-  </div>
-</div>
+  </td>
+  <td><%= route.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+  <td>
+    <%= link_to 'Показать', 
+                admin_route_path(route), 
+                class: 'text-primary text-decoration-none' unless request.path == admin_route_path(route) %>
+  </td>
+</tr>

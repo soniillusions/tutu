@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Поезд: <%= train.number %></h1>
+  </div>
+
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">ID поезда:</div>
+        <div class="col-md-9"><%= train.id %></div>
+      </div>
+      
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">Номер:</div>
+        <div class="col-md-9"><%= train.number %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">Дата создания:</div>
+        <div class="col-md-9"><%= train.created_at.strftime("%d.%m.%Y %H:%M") %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">Дата обновления:</div>
+        <div class="col-md-9"><%= train.updated_at.strftime("%d.%m.%Y %H:%M") %></div>
+      </div>
+    </div>
+  </div>

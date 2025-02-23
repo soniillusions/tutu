@@ -1,10 +1,14 @@
 <%= link_to 'Назад', admin_trains_path %>
 
-<%= render @train %>
+<%= render 'train_details', train: @train %>
 
-<div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
+<div class="d-flex gap-2 mb-4">
   <%= link_to "Изменить", edit_admin_train_path(@train) %>
-  <%= link_to "Удалить", admin_train_path(@train), data: { turbo_method: :delete, turbo_confirm: "Вы уверены?" } %>
+  <%= link_to "Удалить", admin_train_path(@train), 
+  data: { 
+    turbo_method: :delete, 
+    turbo_confirm: "Вы уверены, что хотите удалить этот поезд?"
+    } %>
 </div>
 
 <div class="mb-2">

@@ -1,31 +1,115 @@
 <%= link_to 'Назад', admin_routes_path %>
 
-<%= render 'route', route: @route %>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Маршрут: <%= @route.name %></h1>
+    <%# <%= link_to 'Назад к списку', admin_railway_stations_path, class: 'btn btn-outline-secondary' %>
+  </div>
 
-<div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">ID маршрута:</div>
+        <div class="col-md-9"><%= @route.id %></div>
+      </div>
+      
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">Название:</div>
+        <div class="col-md-9"><%= @route.name %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">Дата создания:</div>
+        <div class="col-md-9"><%= @route.created_at.strftime("%d.%m.%Y %H:%M") %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-3 text-muted">Дата обновления:</div>
+        <div class="col-md-9"><%= @route.updated_at.strftime("%d.%m.%Y %H:%M") %></div>
+      </div>
+    </div>
+  </div>
+
+<div class="d-flex gap-2 mb-4">
   <%= link_to "Изменить", edit_admin_route_path(@route) %>
 
-  <%= link_to "Удалить", admin_route_path(@route), data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"}  %>
+  <%= link_to "Удалить", 
+              admin_route_path(@route), 
+              data: { 
+                turbo_method: :delete, 
+                turbo_confirm: "Вы уверены, что хотите удалить этот маршрут?"
+              } %>
 </div>
 
-<strong>Поезда на этом маршруте:</strong>
-<% if @route.trains.empty? %>
-  <p>На маршруте нет поездов</p>
-<% else %>
-  <% @route.trains.each do |train| %>
-    <%= render partial: 'admin/trains/train', locals: { train: train } %>
-  <% end %>
-<% end %>
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Поезда</h5>
+    </div>
+    <div class="card-body">
+      <% if @route.trains.any? %>
+        <div class="list-group">
+          <% @route.trains.each do |train| %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Номер</th>
+                  <th>Действия</th>
+                  <th>Действия</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render partial: 'admin/trains/train', locals: { train: train } %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-muted mb-0">На маршруте нет поездов</p>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<strong>Список станций на маршруте:</strong>
-<% if @stations.empty? %>
-  <p>На этом маршруте нет ни одной станции</p>
-<% else %>
-  <% @stations.each do |station| %>
-    <%= render partial: 'admin/railway_stations/railway_station',
-               locals: { railway_station: station,
-                         position: station.position_in_route(@route),
-                         departure_time: station.departure_in_route(@route),
-                         arrival_time: station.arrival_in_route(@route) } %>
-  <% end %>
-<% end %>
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="card-title mb-0">Станции на маршруте</h5>
+  </div>
+  <div class="card-body">
+    <% if @stations.empty? %>
+      <p class="text-muted mb-0">На этом маршруте нет ни одной станции</p>
+    <% else %>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Позиция</th>
+              <th>Название станции</th>
+              <th>Время прибытия</th>
+              <th>Время отправления</th>
+              <th>Действия</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @stations.each do |station| %>
+              <tr>
+                <td><%= station.position_in_route(@route) %></td>
+                <td><%= station.title %></td>
+                <td><%= station.arrival_in_route(@route)&.strftime("%d.%m.%Y %H:%M") || 'Не указано' %></td>
+                <td><%= station.departure_in_route(@route)&.strftime("%d.%m.%Y %H:%M") || 'Не указано' %></td>
+                <td>
+                  <%= link_to "Показать", 
+                      admin_railway_station_path(station),
+                      class: "text-primary text-decoration-none" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

@@ -1,6 +1,20 @@
-<%= link_to 'Новый маршрут', new_admin_route_path %>
-<br>
+<h2>Маршруты</h2>
 
-<% @routes.each do |route| %>
-  <%= render 'route', route: route %>
-<% end%>
+<div class="mb-3">
+  <%= link_to "Новый маршрут", new_admin_route_path %>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Название маршрута</th>
+      <th>Станции</th>
+      <th>Создано</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @routes %>
+  </tbody>
+</table>
