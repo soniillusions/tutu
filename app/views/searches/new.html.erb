@@ -1,0 +1,15 @@
+<h2>Поиск поездов:</h2>
+
+<%= form_with url: searches_path, method: :get do |f| %>
+  <div class="mb-2">
+    <%= f.label :departure_station_id, 'Начальная станция:' %>
+    <%= f.collection_select :departure_station_id, @stations, :id, :title, {}, { class: 'form-select' } %>
+  </div>
+
+  <div class="mb-2">
+    <%= f.label :arrival_station_id, 'Конечная станция:' %>
+    <%= f.collection_select :arrival_station_id, @stations, :id, :title, {}, { class: 'form-select' } %>
+  </div>
+
+  <%= f.submit 'Найти', class: 'btn btn-primary' %>
+<% end %>
