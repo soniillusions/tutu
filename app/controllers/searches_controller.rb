@@ -16,6 +16,9 @@ class SearchesController < ApplicationController
       .where("departure_station.railway_station_id = ? AND arrival_station.railway_station_id = ?",
         @departure_station.id, @arrival_station.id)
       .where("departure_station.position < arrival_station.position")
+      .select("routes.*,
+              departure_station.departure_time AS departure_time,
+              arrival_station.arrival_time AS arrival_time")
       .distinct
   end
 end
