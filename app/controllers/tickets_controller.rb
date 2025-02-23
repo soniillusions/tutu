@@ -6,6 +6,16 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = current_user.tickets.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = TicketPdf.new(@ticket)
+        send_data pdf.render, filename: "ticket_#{@ticket.id}.pdf",
+                              type: 'application/pdf',
+                              disposition: 'attachment'
+      end
+    end
   end
 
   def index
