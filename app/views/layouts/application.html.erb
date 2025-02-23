@@ -10,13 +10,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="d-flex flex-column min-vh-100 main-container">
+  <body class="d-flex flex-column min-vh-100">
+    <%= render 'shared/menu'%>
+    
     <main class="flex-grow-1">
-      <%= render 'shared/menu'%>
+      <div class="main-container">
+        <%= render 'shared/flash' %>
 
-      <%= render 'shared/flash' %>
-
-      <%= yield %>
+        <%= yield %>
+      </div>
     </main>
 
     <footer class="text-black text-center py-3">
