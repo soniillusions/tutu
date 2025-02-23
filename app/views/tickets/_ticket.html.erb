@@ -10,7 +10,7 @@
     <p>Станция прибытия: <%= ticket.arrival_station.title %></p>
     <p>Номер поезда: <%= ticket.train_id %></p>
 
-    <%= link_to 'Скачать билет (PDF)', user_ticket_path(current_user, ticket, format: :pdf), class: "me-2" %>
+    <%= link_to 'Скачать билет (PDF)', user_ticket_path(current_user, ticket, format: :pdf), class: "me-2", target: '_blank' %>
     <%= link_to 'Сдать билет', user_ticket_path(current_user, ticket), data: { turbo_method: :delete, turbo_confirm: "Вы уверены?" }  %>
   </div>
 </div>

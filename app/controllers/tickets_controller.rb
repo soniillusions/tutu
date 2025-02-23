@@ -13,7 +13,7 @@ class TicketsController < ApplicationController
         pdf = TicketPdf.new(@ticket)
         send_data pdf.render, filename: "ticket_#{@ticket.id}.pdf",
                               type: 'application/pdf',
-                              disposition: 'attachment'
+                              disposition: 'inline'
       end
     end
   end
