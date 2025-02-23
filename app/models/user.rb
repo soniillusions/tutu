@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :tickets
+
+  enum role: { basic: 0, moderator: 1, admin: 2 }, _suffix: :role
 end

@@ -6,23 +6,29 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to 'Станции', railway_stations_path, class: "nav-link active" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Поезда', trains_path, class: "nav-link active" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Маршруты', routes_path, class: "nav-link active" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Поиск поездов', new_searches_path, class: "nav-link active" %>
-        </li>
+        <% if current_user&.admin_role? %>
+          <li class="nav-item">
+            <%= link_to 'Станции', admin_railway_stations_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Поезда', admin_trains_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Маршруты', admin_routes_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Поиск поездов', new_searches_path, class: "nav-link active" %>
+          </li>
+        <% end %>
       </ul>
 
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
-          <%= link_to current_user.email, user_tickets_path(current_user), class: "nav-link active" %>
+          <% if current_user&.admin_role? %>
+            <%# <%= link_to 'Админ панель', admin_users_path, class: "nav-link active" %>
+          <% else %>
+            <%= link_to current_user.email, user_tickets_path(current_user), class: "nav-link active" %>
+          <% end %>
           <%= link_to 'Выйти', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?'}, class: "nav-link active" %>
         <% else %>
           <%= link_to 'Войти', new_user_session_path, class: "nav-link active"  %> <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "nav-link active" %>

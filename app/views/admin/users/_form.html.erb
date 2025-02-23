@@ -1,0 +1,30 @@
+<%= form_with(model: @user, url: admin_users_path, local: true) do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-for  m-label">
+      <%= f.label :role %>
+    </div>
+
+    <div class="col-sm-10">
+      <%= f.select :roel, user_roles, {}, class: 'form-select form-select-lg' %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit "Сохранить" %>
+  </div>
+<% end %>

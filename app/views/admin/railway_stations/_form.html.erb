@@ -1,0 +1,12 @@
+<%= form_with(model: @railway_station, url: @railway_station.persisted? ? admin_railway_station_path(@railway_station) : admin_railway_stations_path, method: @railway_station.persisted? ? :patch : :post) do |form| %>
+  <%= render 'shared/errors', object: @railway_station %>
+
+  <div class="mb-2">
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class: 'form-control', required: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'Сохранить', class: 'btn btn-primary ' %>
+  </div>
+<% end %>

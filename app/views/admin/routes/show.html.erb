@@ -1,0 +1,31 @@
+<%= link_to 'Назад', admin_routes_path %>
+
+<%= render 'route', route: @route %>
+
+<div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
+  <%= link_to "Изменить", edit_admin_route_path(@route) %>
+
+  <%= link_to "Удалить", admin_route_path(@route), data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"}  %>
+</div>
+
+<strong>Поезда на этом маршруте:</strong>
+<% if @route.trains.empty? %>
+  <p>На маршруте нет поездов</p>
+<% else %>
+  <% @route.trains.each do |train| %>
+    <%= render partial: 'admin/trains/train', locals: { train: train } %>
+  <% end %>
+<% end %>
+
+<strong>Список станций на маршруте:</strong>
+<% if @stations.empty? %>
+  <p>На этом маршруте нет ни одной станции</p>
+<% else %>
+  <% @stations.each do |station| %>
+    <%= render partial: 'admin/railway_stations/railway_station',
+               locals: { railway_station: station,
+                         position: station.position_in_route(@route),
+                         departure_time: station.departure_in_route(@route),
+                         arrival_time: station.arrival_in_route(@route) } %>
+  <% end %>
+<% end %>

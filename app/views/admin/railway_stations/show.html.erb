@@ -1,0 +1,17 @@
+<%= link_to 'Назад', admin_railway_stations_path %>
+
+<%= render @railway_station %>
+
+<div class="container d-flex align-items-center justify-content-center gap-2 mb-4">
+  <%= link_to "Изменить", edit_admin_railway_station_path(@railway_station) %>
+  <%= link_to "Удалить", admin_railway_station_path(@railway_station), data: { turbo_method: :delete, turbo_confirm: "Вы уверены?"} %>
+</div>
+
+<% if @railway_station.routes.nil? %>
+  <p>Станция не имеет ни одного маршрута!</p>
+<% else %>
+  <p>Станция входит в следующие маршруты:</p>
+  <% @railway_station.routes.each do |route| %>
+    <%= render partial: 'admin/routes/route', locals: { route: route } %>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<%= link_to 'Назад', admin_railway_stations_path %>
+
+<h1>Новая станция: </h1>
+
+<%= render "form", railway_station: @railway_station %>
+
+<br>
+
+<div>
+  <%= link_to "Назад к списку всех станций", admin_railway_stations_path %>
+</div>

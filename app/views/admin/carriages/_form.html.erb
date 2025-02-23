@@ -1,0 +1,41 @@
+<%= form_with(model: @carriage_for_form,
+url: @carriage_for_form.persisted? ? admin_train_carriage_path(@train, @carriage_for_form) : admin_train_carriages_path(@train),
+ local: true) do |form| %>
+  <%= render 'shared/errors', object: @carriage %>
+
+  <%= form.label :type, "Тип вагона" %>
+  <%= form.select :type, 
+  [['Купейный', 'CoupeCarriage'],
+   ['Плацкартный', 'EconomCarriage'],
+   ['СВ', 'SvCarriage'],
+   ['Сидячий', 'SeatOnlyCarriage']], {}, { id: 'carriage_type', class: 'form-select' }  %>
+
+  <div class="mb-2">
+    <%= form.label :top_seats, "Верхние места" %>
+    <%= form.number_field :top_seats, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :bottom_seats, "Нижние места" %>
+    <%= form.number_field :bottom_seats, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :side_top_seats, "Боковые верхние места" %>
+    <%= form.number_field :side_top_seats, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :side_bottom_seats, "Боковые нижние места" %>
+    <%= form.number_field :side_bottom_seats, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :seating_seats, "Сидячие места" %>
+    <%= form.number_field :seating_seats, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.submit 'Сохранить', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -5,7 +5,7 @@
 <% if @routes.any? %>
     <% @routes.each do |route| %>
       <% route.trains.each do |train| %>
-        <%= render partial: 'trains/train', locals: { train: train } %>
+        <%= render partial: 'admin/trains/train', locals: { train: train } %>
       <tr>
         <td>Отправление: <%= route.departure_time || "-" %></td>
         <td>Прибытие: <%= route.arrival_time || "-" %></td>

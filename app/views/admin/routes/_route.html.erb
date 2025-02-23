@@ -1,0 +1,17 @@
+<div class="card mb-2" id="<%= dom_id route %>">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= route.name %>
+    </h5>
+
+    <div class="row mb-2">
+      <div class="col">
+        <img src="<%= asset_path('route') %>" class="img">
+      </div>
+    </div>
+
+    <% unless request.path == admin_route_path(route)  %>
+      <%= link_to 'Подробнее', admin_route_path(route) %>
+    <% end %>
+  </div>
+</div>
