@@ -13,6 +13,8 @@
     <% if current_user.present? && params[:departure_station_id].present? && params[:arrival_station_id].present? %>
       <%= link_to 'Купить билет', new_user_ticket_path(current_user, train_id: train.id,
       departure_station_id: params[:departure_station_id], arrival_station_id: params[:arrival_station_id]) %>
+    <% else %>
+      <p>Войдите или зарегистрируйтесь, чтобы купить билет.</p>
     <% end %>
 
     <% if current_user&.admin_role? %>

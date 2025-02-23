@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root "static_pages#index"
+  root "searches#new"
 end
