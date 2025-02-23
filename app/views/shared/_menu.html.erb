@@ -23,10 +23,12 @@
           <li class="nav-item">
             <%= link_to 'Поиск Билетов', new_searches_path, class: "nav-link active" %>
           </li>
-
-          <li class="nav-item">
-            <%= link_to 'Мои билеты', user_tickets_path(current_user), class: "nav-link active" %>
-          </li>
+          
+          <% if current_user.present? %>
+            <li class="nav-item">
+              <%= link_to 'Мои билеты', user_tickets_path(current_user), class: "nav-link active" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
 
