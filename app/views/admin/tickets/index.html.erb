@@ -1,0 +1,9 @@
+<h2>Управление билетами</h2>
+
+<% if @tickets.any? %>
+  <% @tickets.each do |ticket| %>
+    <%= render 'ticket', ticket: ticket %>
+  <% end %>
+<% else %>
+  <p>В системе нет билетов :((</p>
+<% end %>

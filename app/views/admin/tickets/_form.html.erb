@@ -1,0 +1,17 @@
+<%= form_with model: [:admin, @ticket], local: true do |f| %>
+  <%= render 'shared/errors', object: @ticket %>
+
+  <div class="mb-2">
+    <%= f.label :passenger_name, 'Пассажир' %>
+    <%= f.text_field :passenger_name, class: 'form-control' %>
+  </div>
+
+  <div class="mb-2">
+    <%= f.label :passport_number, 'Номер паспорта' %>
+    <%= f.text_field :passport_number, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= f.submit 'Сохранить', class: 'btn btn-secondary' %>
+  </div>
+<% end %>

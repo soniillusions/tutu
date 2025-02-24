@@ -1,3 +1,7 @@
-<h2>Ваши билеты:</h2>
+<h2>Ваши билеты</h2>
 
-<%= render @tickets %>
+<% if @tickets.any? %>
+  <%= render @tickets %>
+<% else %>
+  <p>Билеты не найдены</p>
+<% end %>

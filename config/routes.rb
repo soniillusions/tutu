@@ -10,12 +10,14 @@ Rails.application.routes.draw do
       resources :carriages
     end
 
+    resources :tickets
+
     resources :railway_stations
     resources :routes
   end
 
   resources :users, only: [] do
-    resources :tickets, only: %i[index show new create destroy] 
+    resources :tickets, only: %i[index new show create destroy] 
   end
 
   resource :searches, only: [:new, :show, :create]
