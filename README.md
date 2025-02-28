@@ -1,7 +1,5 @@
 # Train ticket search app
 
-## Application Description
-
 This is a train ticket booking application where users can search for train tickets and purchase them. Once a ticket is bought, it will be available in the user's profile, where they can download it as a PDF.
 
 <p align="center">
