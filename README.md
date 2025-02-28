@@ -45,7 +45,7 @@ rails db:create db:migrate db:seed
 To start the application, run:
 
 ```sh
-bin/dev
+rails s
 ```
 
 By default, the application will be available at `http://localhost:3000`.
