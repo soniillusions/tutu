@@ -50,7 +50,7 @@ bin/dev
 
 By default, the application will be available at `http://localhost:3000`.
 
-### Admin Panel Access
+## Admin Panel Access
 
 To access the admin panel, use the following credentials:
 
