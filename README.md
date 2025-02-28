@@ -3,7 +3,7 @@
 This is a train ticket booking application where users can search for train tickets and purchase them. Once a ticket is bought, it will be available in the user's profile, where they can download it as a PDF.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/14841a00-7769-493b-9e4e-abd7eeedfa4d">
+  <img src="https://github.com/user-attachments/assets/555d4357-7cf2-481a-b3d8-f58d8cf81c20">
 </p>
 
 ### Features
